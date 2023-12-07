@@ -1,0 +1,44 @@
+﻿@using customlogin2.ViewModel
+@model LoginVM
+
+@{
+    ViewData["Title"] = "Login";
+ 
+}
+
+<div class="row d-flex justify-content-center">
+    <div class=" col-md-3 card p-3">
+        <h2 class="text-centre text-info">Login</h2>
+        <form asp-action="Login" method="post">
+            <div asp-validation-summary="ModelOnly"></div>
+            <div class="mb-1">
+                <label asp-for="Username">UserName</label>
+                <input asp-for="Username" class="form-control" />
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+            <div class="mb-1">
+                <label asp-for="Password">Pasword</label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="mb-1 form-check">
+                <label  class="form-check-label" >
+                    <input asp-for="RememberMe" class="form-check-input" />@Html.DisplayNameFor(a=>a.RememberMe)
+                </label>
+           
+            </div>
+            <div class="row">
+                <div class="col-sm-8"><a asp-action="Registration" class="text-decoration-none ">Dont Havent Account ?</a></div>
+            </div>
+            <div class="col-4">
+                <input type="submit" value="Login " class="btn btn-primary btn-sm float-end" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
